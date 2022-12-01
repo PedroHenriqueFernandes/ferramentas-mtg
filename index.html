@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100vh;
+        }
+
+        button {
+            border: 0;
+            width: 6rem;
+            height: 2rem;
+            border-radius: 10px;
+            background-color: yellowgreen;
+        }
+
+        input {
+            height: 3rem;
+            width: 16rem;
+            border-radius: 10px;
+            border: 1px solid black;
+            padding-left: .2rem;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Maiúsculo</h3>
+        <input type="text" id="text" placeholder="Digite o texto a ser convertido...">
+        <button onclick="convert()">Converter</button>
+        <p id="res"></p>
+    </div>
+    <div class="container">
+        <h3>Minúsculo</h3>
+        <input type="text" id="textLowerCase" placeholder="Digite o texto a ser convertido...">
+        <button onclick="convertLowerCase()">Converter</button>
+        <p id="resLowerCase"></p>
+    </div>
+</body>
+<script>
+    function convert() {
+        let text = document.getElementById('text').value
+        text = text.toUpperCase()
+        text = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        res.textContent = text
+    }
+
+    function convertLowerCase() {
+        let text = document.getElementById('textLowerCase').value
+        text = text.toLowerCase()
+        text = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        resLowerCase.textContent = text
+    }
+</script>
+
+</html>
